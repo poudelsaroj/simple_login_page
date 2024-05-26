@@ -1,49 +1,48 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import useAuth from './useAuth';
 import './loginpage.css';
 
-// Mock JSON data for credentials
-import credentials from './credentials.json';
-
-const Loginpage = () => {
+const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const { login, error } = useAuth();
 
-  const handleLogin = () => {
-    const user = credentials.find(cred => cred.username === username && cred.password === password);
-    if (user) {
-      // If credentials are correct, navigate to the homepage
-      navigate('/home');
-    } else {
-      // If credentials are incorrect, show error message
-      setError('Invalid username or password');
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(username, password);
   };
 
   return (
-    <>
-      <div className="header">Login Page</div>
-      <div className='login'>
+    <div>
+      <div className="header">
+        <h2>Login</h2>
+      </div>
+      <div className="login">
         <div>
-          <div className="username">
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          </div>
-          <div className="password">
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-        </div>
-        <div className="login">
-          <button onClick={handleLogin}>Login</button>
-          {error && <div className="error">{error}</div>}
+          <form onSubmit={handleLogin}>
+            <div className="username">
+              <input 
+                type="text" 
+                placeholder="Username" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+              />
+            </div>
+            <div className="password">
+              <input 
+                type="password" 
+                placeholder="Password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+              />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Loginpage;
-
-
-
+export default LoginPage;
