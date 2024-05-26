@@ -22,10 +22,37 @@ body {
     margin: 20px auto;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 9px 12px rgba(53, 52, 52, 0.1);
+    border-radius: 2px;
+    border: #333;
   }
   
   .congrats:before {
     content: "🎉 ";
   }
-  
+  .logout{
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .logout:hover{
+    
+    background-color: #ec7d75;
+    color: rgb(243, 207, 207);
+    
+   
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  .footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }

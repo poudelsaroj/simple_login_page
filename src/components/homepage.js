@@ -16,7 +16,10 @@ const HomePage = () => {
         <h2>Welcome, Om Bahadur Chettri.</h2>
       </div>
       <div className="congrats">Congratulations Om Bahadur for Lieutenant post.</div>
-      <button onClick={handleLogout}>Logout</button>
+      <div className="footer">
+      <button className="logout" onClick={handleLogout}>Logout</button>
+
+      </div>
     </div>
   );
 };
